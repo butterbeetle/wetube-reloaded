@@ -19,3 +19,7 @@
 #7.15 dotenv
 #7.19 node-fetch@2.6.1
 #8.6 multer
+#9.1 webpack
+#9.2 babel-loader
+#9.4 sass-loader, css-loader, style-loader
+#9.5 mini-css-extract-plugin

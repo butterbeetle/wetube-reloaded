@@ -18,7 +18,7 @@ userRouter.route("/edit").all(protectedMiddleware).get(getEdit).post(avatarUploa
 userRouter.route("/change-password").all(protectedMiddleware).get(getChangePassword).post(postChangePassword);
 userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
-userRouter.get(":id", see);
+userRouter.get("/:id", see);
 
 
 export default userRouter;

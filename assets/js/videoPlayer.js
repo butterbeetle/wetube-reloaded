@@ -15,7 +15,7 @@
   \**************************************/
 /***/ (() => {
 
-eval("console.log(\"video player\");\n\n//# sourceURL=webpack://wetube/./src/client/js/videoPlayer.js?");
+eval("var video = document.querySelector(\"video\");\nvar playBtn = document.getElementById(\"play\");\nvar muteBtn = document.getElementById(\"mute\");\nvar time = document.getElementById(\"time\");\nvar volume = document.getElementById(\"volume\");\n\nvar handlePlayClick = function handlePlayClick(e) {\n  if (video.paused) {\n    playBtn.innerText = \"Pause\";\n    video.play();\n  } else {\n    video.pause();\n  }\n};\n\nvar handlePause = function handlePause(e) {\n  return playBtn.innerText = \"Play\";\n};\n\nvar handlePlay = function handlePlay(e) {\n  return playBtn.innerText = \"Pause\";\n};\n\nvar handleMute = function handleMute(e) {};\n\nplayBtn.addEventListener(\"click\", handlePlayClick);\nmuteBtn.addEventListener(\"click\", handleMute);\nvideo.addEventListener(\"pause\", handlePause);\nvideo.addEventListener(\"play\", handlePlay);\n\n//# sourceURL=webpack://wetube/./src/client/js/videoPlayer.js?");
 
 /***/ })
 

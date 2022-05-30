@@ -101,7 +101,7 @@ const handleSpace = (event) => {
     }
 }
 
-const hadnleVideoClick = (event) => {
+const hadnleVideoClick = () => {
     handlePlayClick();
 }
 

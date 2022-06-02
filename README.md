@@ -23,3 +23,4 @@
 #9.2 babel-loader
 #9.4 sass-loader, css-loader, style-loader
 #9.5 mini-css-extract-plugin
+#13.0 regenerator-runtime

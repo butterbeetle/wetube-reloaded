@@ -7,6 +7,7 @@ export const home = async (req, res) => {
         .populate("owner");
     return res.render("home", { pageTitle: "Home", videos });
 };
+
 export const watch = async (req, res) => {
     const { id } = req.params;
     const video = await Video.findById(id).populate("owner");
@@ -16,28 +17,35 @@ export const watch = async (req, res) => {
     }
     return res.render("watch", { pageTitle: video.title, video });
 };
+
 export const getEdit = async (req, res) => {
     const { id } = req.params;
-    const { user: { _id } } = req.session;
+    const {
+        user: { _id },
+    } = req.session;
     const video = await Video.findById(id);
     if (!video) {
         return res.status(404).render("404", { pageTitle: "Video not found." });
     }
     if (String(video.owner) !== String(_id)) {
-        req.flash("error", "You are not the owner of the video");
+        req.flash("error", "Not authorized");
         return res.status(403).redirect("/");
     }
     return res.render("edit", { pageTitle: `Edit: ${video.title}`, video });
 };
+
 export const postEdit = async (req, res) => {
+    const {
+        user: { _id },
+    } = req.session;
     const { id } = req.params;
-    const { user: { _id } } = req.session;
     const { title, description, hashtags } = req.body;
-    const video = await Video.findById({ _id: id });
+    const video = await Video.exists({ _id: id });
     if (!video) {
         return res.status(404).render("404", { pageTitle: "Video not found." });
     }
     if (String(video.owner) !== String(_id)) {
+        req.flash("error", "You are not the the owner of the video.");
         return res.status(403).redirect("/");
     }
     await Video.findByIdAndUpdate(id, {
@@ -45,7 +53,7 @@ export const postEdit = async (req, res) => {
         description,
         hashtags: Video.formatHashtags(hashtags),
     });
-    req.flash("success", "Changes saved");
+    req.flash("success", "Changes saved.");
     return res.redirect(`/videos/${id}`);
 };
 
@@ -117,3 +125,9 @@ export const registerView = async (req, res) => {
 
     return res.sendStatus(200);
 }
+
+export const createComment = (req, res) => {
+    console.log(req.params);
+    console.log(req.body);
+    return res.end();
+};

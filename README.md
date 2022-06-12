@@ -27,3 +27,4 @@
 #14.0 ffmpeg
 #15.0 express-flash
 #17.0 npm install --save-dev @babel/cli
+#17.7 Multer S3 , aws-sdk

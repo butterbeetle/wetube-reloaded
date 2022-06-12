@@ -26,3 +26,4 @@
 #13.0 regenerator-runtime
 #14.0 ffmpeg
 #15.0 express-flash
+#17.0 npm install --save-dev @babel/cli

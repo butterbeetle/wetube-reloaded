@@ -6,7 +6,7 @@ const s3 = new aws.S3({
     credentials: {
         accessKeyId: process.env.AWS_ID,
         secretAccessKey: process.env.AWS_SECRET,
-    }
+    },
 });
 
 const isHeroku = process.env.NODE_ENV === "production";
@@ -19,7 +19,7 @@ const s3ImageUploader = multerS3({
 
 const s3VideoUploader = multerS3({
     s3: s3,
-    bucket: "wetube-shoe/images",
+    bucket: "wetube-shoe/videos",
     acl: "public-read",
 });
 
